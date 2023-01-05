@@ -3,7 +3,6 @@ import "./style.css";
 
 const WeatherOthers = (props) => {
   const { weather } = props;
-  console.log(weather);
 
   const list = weather.list.filter((day, index) => index % 8 === 0);
 

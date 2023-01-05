@@ -19,7 +19,8 @@ const WeatherItem = (props) => {
         />
       </li>
       <li className="day-temp">
-        {Math.floor(props.main.temp - 273, 15) + " &#xb0"};
+        {Math.floor(props.main.temp - 273, 15) + " C"}
+        {"\u00b0"}
       </li>
     </ul>
   );

@@ -48,7 +48,10 @@ const WeatherToday = (props) => {
             />
           </p>
           <h4>{weather.list[0].weather[0].main}</h4>
-          <h2>{Math.floor(weather.list[0].main.temp - 273, 15) + " &#xb0"}</h2>
+          <h2>
+            {Math.floor(weather.list[0].main.temp - 273, 15) + " C"}
+            {"\u00b0"}
+          </h2>
           <ul className="wind">
             <li>{degWind}</li>
             <li>{Math.floor(weather.list[0].wind.speed) + "m/s"}</li>

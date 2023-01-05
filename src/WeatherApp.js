@@ -14,20 +14,36 @@ class WeatherApp extends React.Component {
 
   componentDidMount() {
     axios.get(`${url}`).then((response) => {
-      console.log(response);
       const weather = response.data;
-      console.log(weather);
       this.setState({ weather });
     });
+
+    document.addEventListener("mousemove", this.mouseListener);
+  }
+
+  mouseListener = (e) => {
+    let x = e.pageX;
+    let y = e.pageY;
+    console.log(x, y);
+  };
+
+  componentWillUnmount() {
+    document.removeEventListener("mousemove", this.mouseListener);
+    console.log("component unmount");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.userId !== prevProps.userId) {
+      this.fetchData(this.props.userId);
+    }
   }
 
   render() {
     const { weather } = this.state;
 
-    // if (!weather) {
-    //   return <div>Loading...</div>;
-    // }
-    console.log(weather);
+    if (!weather) {
+      return <div>Loading...</div>;
+    }
     return (
       <>
         <WeatherToday weather={weather} />
